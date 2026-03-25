@@ -64,6 +64,9 @@
     "cms",
     "dynamic"
   ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "author": "GoCloud.era Team",
   "license": "MIT"
 }
