@@ -8,4 +8,17 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   clearMocks: true,
+  collectCoverageFrom: [
+    'src/**/*.{js,jsx}',
+    '!src/**/*.stories.{js,jsx}',
+    '!src/index.js',
+  ],
+  coverageThreshold: {
+    global: {
+      branches: 95,
+      functions: 95,
+      lines: 95,
+      statements: 95,
+    },
+  },
 };

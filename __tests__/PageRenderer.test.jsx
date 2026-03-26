@@ -33,6 +33,16 @@ describe('PageRenderer', () => {
     expect(screen.getByText('Page not found')).toBeInTheDocument();
   });
 
+  it('uses custom notFound component', () => {
+    render(<PageRenderer page={null} notFound={<div>Custom 404</div>} />);
+    expect(screen.getByText('Custom 404')).toBeInTheDocument();
+  });
+
+  it('shows generic error message when error has no message', () => {
+    render(<PageRenderer error={{}} />);
+    expect(screen.getByText('An unexpected error occurred')).toBeInTheDocument();
+  });
+
   it('renders sections inside main', () => {
     const page = {
       id: 7,

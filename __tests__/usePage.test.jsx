@@ -78,4 +78,17 @@ describe('usePage with stubbed context', () => {
       expect(screen.getByText('error:network')).toBeInTheDocument();
     });
   });
+
+  it('handles unmount during loading', () => {
+    fetchPage.mockReturnValue(new Promise(() => {})); // never resolves
+    const { unmount } = render(
+      <MockProvider>
+        <PageView slug="slow" />
+      </MockProvider>
+    );
+    // Should show loading
+    expect(screen.getByText('loading')).toBeInTheDocument();
+    // Unmounting should not cause errors
+    unmount();
+  });
 });

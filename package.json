@@ -12,6 +12,8 @@
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --coverage --ci",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
