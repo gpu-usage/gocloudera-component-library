@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import * as Icons from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 /**
  * Tabs Section Component
@@ -104,14 +106,30 @@ const TabsSection = ({
         <div className="tab-content">
           {tabs[activeTab] && (
             <div
+              className="tab-content-body"
               style={{
                 lineHeight: 1.8,
                 color: '#374151',
               }}
-              dangerouslySetInnerHTML={{ __html: tabs[activeTab].content }}
-            />
+            >
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                {tabs[activeTab].content || ''}
+              </ReactMarkdown>
+            </div>
           )}
         </div>
+        <style>{`
+          .tab-content-body h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #111827; }
+          .tab-content-body h3 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 0.75rem; color: #1f2937; }
+          .tab-content-body p { margin: 0.75rem 0; }
+          .tab-content-body ul, .tab-content-body ol { margin: 0.75rem 0; padding-left: 1.5rem; }
+          .tab-content-body li { margin: 0.25rem 0; }
+          .tab-content-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; color: #7c3aed; }
+          .tab-content-body pre { background: #1e293b; color: #e2e8f0; padding: 1rem 1.25rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+          .tab-content-body pre code { background: none; color: inherit; padding: 0; }
+          .tab-content-body strong { font-weight: 600; color: #111827; }
+          .tab-content-body a { color: #7c3aed; text-decoration: underline; }
+        `}</style>
       </div>
     </section>
   );

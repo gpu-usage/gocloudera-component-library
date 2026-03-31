@@ -8,6 +8,7 @@ import * as Icons from 'lucide-react';
 const Button = ({
   text,
   url,
+  link,
   type = 'button',
   variant = 'primary',
   size = 'medium',
@@ -20,6 +21,8 @@ const Button = ({
   style = {},
   className = '',
 }) => {
+  // Support Strapi's "link" field as well as legacy "url"
+  const resolvedUrl = url || link;
   const IconComponent = icon && Icons[icon];
 
   const sizeStyles = {
@@ -96,10 +99,10 @@ const Button = ({
     </>
   );
 
-  if (url && type === 'link') {
+  if (resolvedUrl) {
     return (
       <a
-        href={url}
+        href={resolvedUrl}
         target={openInNewTab ? '_blank' : undefined}
         rel={openInNewTab ? 'noopener noreferrer' : undefined}
         className={clsx('button', `button-${variant}`, className)}

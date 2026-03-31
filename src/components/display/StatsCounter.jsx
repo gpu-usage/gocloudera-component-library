@@ -10,6 +10,8 @@ const StatsCounter = ({
   subtitle,
   stats = [],
   backgroundColor = '#4f46e5',
+  gradientFrom,
+  gradientTo,
   textColor = '#ffffff',
   animateOnScroll = true,
   className = '',
@@ -38,7 +40,9 @@ const StatsCounter = ({
   }, [animateOnScroll]);
 
   const containerStyle = {
-    background: backgroundColor,
+    ...(gradientFrom && gradientTo
+      ? { backgroundImage: `linear-gradient(135deg, ${gradientFrom}, ${gradientTo})` }
+      : { backgroundColor }),
     color: textColor,
     padding: '4rem 2rem',
   };

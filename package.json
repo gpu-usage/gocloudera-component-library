@@ -2,8 +2,8 @@
   "name": "@gocloudera/component-library",
   "version": "1.0.0",
   "description": "Dynamic component library for Strapi-powered pages",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -54,6 +54,10 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "storybook": "^8.4.7",
     "typescript": "^5.7.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
   },
   "repository": {
     "type": "git",
