@@ -78,11 +78,13 @@ const TabsSection = ({
 
         {/* Tab Headers */}
         <div
+          className="tabs-header"
           style={{
             display: 'flex',
             justifyContent: 'center',
+            flexWrap: 'wrap',
             gap: tabStyle === 'pills' ? '0.5rem' : '0',
-            borderBottom: tabStyle === 'underline' ? '1px solid #e5e7eb' : 
+            borderBottom: tabStyle === 'underline' ? '1px solid #e5e7eb' :
                           tabStyle === 'boxed' ? '2px solid #e5e7eb' : 'none',
             marginBottom: '2rem',
           }}
